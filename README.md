@@ -21,7 +21,7 @@ Hindi, English, Marathi, Bengali, Tamil, Punjabi, Kannada, Gujarati, Malayalam, 
 
 ## Live Tool
 Visit the live tool here :
-munishckatagihallimath-arch/birthday-poem-tool
+ https://munishckatagihallimath-arch/birthday-poem-tool
 
 ## Powered By
 Claude AI by Anthropic
