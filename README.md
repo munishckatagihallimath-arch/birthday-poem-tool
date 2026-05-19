@@ -20,7 +20,8 @@ Hindi, English, Marathi, Bengali, Tamil, Punjabi, Kannada, Gujarati, Malayalam, 
 4. Click Generate — enjoy your poem!
 
 ## Live Tool
-Visit the live tool here: https://YOUR-USERNAME.github.io/birthday-poem-tool/
+Visit the live tool here :
+munishckatagihallimath-arch/birthday-poem-tool
 
 ## Powered By
 Claude AI by Anthropic
