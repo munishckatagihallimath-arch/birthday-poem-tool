@@ -1,0 +1,152 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif}
+#bpg-wrap{background:linear-gradient(135deg,#1a0533,#2d0b5a,#1a0040);min-height:100vh;padding:2rem 1rem;font-family:'Lato',sans-serif;color:#fff}
+#bpg-inner{max-width:680px;margin:0 auto}
+.bpg-hero{text-align:center;margin-bottom:2rem}
+.bpg-icon{font-size:48px;display:block;margin-bottom:.5rem;animation:bpg-bounce 2s ease-in-out infinite}
+@keyframes bpg-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.bpg-h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;background:linear-gradient(90deg,#f9c6ff,#ffe194,#f9c6ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2;margin-bottom:.4rem}
+.bpg-tag{color:rgba(255,255,255,.55);font-size:.95rem}
+.bpg-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:1.8rem;margin-bottom:1.5rem}
+.bpg-label{display:block;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.5rem;font-weight:700}
+.bpg-input{width:100%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:12px;color:#fff;font-size:1rem;font-family:'Lato',sans-serif;padding:.75rem 1rem;outline:none;margin-bottom:1.2rem;transition:border .2s}
+.bpg-input:focus{border-color:rgba(249,198,255,.6)}
+.bpg-input::placeholder{color:rgba(255,255,255,.3)}
+.bpg-select{width:100%;background:#2d0b5a;border:1px solid rgba(255,255,255,.18);border-radius:12px;color:#fff;font-size:1rem;font-family:'Lato',sans-serif;padding:.75rem 1rem;outline:none;margin-bottom:1.2rem}
+.bpg-langs{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.5rem;margin-bottom:1.2rem}
+.bpg-lang{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;color:rgba(255,255,255,.75);font-size:.85rem;padding:.5rem .7rem;cursor:pointer;transition:all .2s;font-family:'Lato',sans-serif;text-align:center}
+.bpg-lang:hover{background:rgba(249,198,255,.18);border-color:rgba(249,198,255,.4);color:#fff}
+.bpg-lang.active{background:rgba(192,38,211,.25);border-color:#e040fb;color:#f9c6ff;font-weight:700}
+.bpg-btn{width:100%;padding:.95rem;border:none;border-radius:13px;background:linear-gradient(135deg,#c026d3,#7c3aed);color:#fff;font-size:1.05rem;font-weight:700;font-family:'Lato',sans-serif;cursor:pointer;letter-spacing:.04em;transition:opacity .2s,transform .15s}
+.bpg-btn:hover{opacity:.9}
+.bpg-btn:active{transform:scale(.98)}
+.bpg-btn:disabled{opacity:.5;cursor:not-allowed}
+.bpg-out{display:none;margin-top:1.5rem}
+.bpg-poem-card{background:rgba(255,255,255,.07);border:1px solid rgba(249,198,255,.25);border-radius:18px;padding:1.8rem 1.8rem 1.4rem;position:relative;overflow:hidden}
+.bpg-poem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c026d3,#ffe194,#c026d3);background-size:200%;animation:bpg-shim 3s linear infinite}
+@keyframes bpg-shim{0%{background-position:0%}100%{background-position:200%}}
+.bpg-ptitle{font-family:'Playfair Display',serif;font-size:1.05rem;color:#f9c6ff;margin-bottom:1rem}
+.bpg-ptext{font-size:1rem;line-height:2;color:rgba(255,255,255,.92);white-space:pre-wrap;min-height:60px}
+.bpg-actions{display:flex;gap:.7rem;margin-top:1.2rem;flex-wrap:wrap}
+.bpg-act{padding:.5rem 1rem;border-radius:9px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);font-size:.85rem;cursor:pointer;transition:all .2s;font-family:'Lato',sans-serif}
+.bpg-act:hover{background:rgba(255,255,255,.16);color:#fff}
+.bpg-dots{display:inline-flex;gap:5px;align-items:center}
+.bpg-dots span{width:6px;height:6px;background:#fff;border-radius:50%;animation:bpg-db 1.2s infinite}
+.bpg-dots span:nth-child(2){animation-delay:.2s}
+.bpg-dots span:nth-child(3){animation-delay:.4s}
+@keyframes bpg-db{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+</style>
+
+<div id="bpg-wrap">
+<div id="bpg-inner">
+  <div class="bpg-hero">
+    <span class="bpg-icon">🎂</span>
+    <div class="bpg-h1">Birthday Poem Generator</div>
+    <p class="bpg-tag">Create a heartfelt poem in any language, personalized by name</p>
+  </div>
+
+  <div class="bpg-card">
+    <label class="bpg-label">🎁 Person's Name</label>
+    <input class="bpg-input" id="bpg-name" placeholder="e.g. Rahul, Priya, Arjun..." maxlength="50" />
+
+    <label class="bpg-label">🌍 Choose Language</label>
+    <div class="bpg-langs" id="bpg-langs">
+      <button class="bpg-lang active" data-lang="Hindi">🇮🇳 Hindi</button>
+      <button class="bpg-lang" data-lang="English">🇬🇧 English</button>
+      <button class="bpg-lang" data-lang="Marathi">🟠 Marathi</button>
+      <button class="bpg-lang" data-lang="Bengali">🔵 Bengali</button>
+      <button class="bpg-lang" data-lang="Tamil">🌴 Tamil</button>
+      <button class="bpg-lang" data-lang="Punjabi">⚡ Punjabi</button>
+      <button class="bpg-lang" data-lang="Urdu">🌙 Urdu</button>
+      <button class="bpg-lang" data-lang="Spanish">🇪🇸 Spanish</button>
+      <button class="bpg-lang" data-lang="French">🇫🇷 French</button>
+      <button class="bpg-lang" data-lang="Arabic">🌟 Arabic</button>
+      <button class="bpg-lang" data-lang="Japanese">🇯🇵 Japanese</button>
+      <button class="bpg-lang" data-lang="Telugu">🔆 Telugu</button>
+    </div>
+
+    <label class="bpg-label">💡 Poem Style</label>
+    <select class="bpg-select" id="bpg-style">
+      <option value="heartfelt">❤️ Heartfelt & Emotional</option>
+      <option value="funny">😄 Funny & Playful</option>
+      <option value="romantic">🌹 Romantic</option>
+      <option value="inspirational">✨ Inspirational</option>
+      <option value="short">🎯 Short & Sweet</option>
+      <option value="long">📜 Long & Detailed</option>
+    </select>
+
+    <button class="bpg-btn" id="bpg-btn" onclick="bpgGenerate()">
+      <span id="bpg-btntxt">✨ Generate Birthday Poem</span>
+    </button>
+  </div>
+
+  <div class="bpg-out" id="bpg-out">
+    <div class="bpg-poem-card">
+      <div class="bpg-ptitle" id="bpg-ptitle">Birthday Poem</div>
+      <div class="bpg-ptext" id="bpg-ptext"></div>
+      <div class="bpg-actions">
+        <button class="bpg-act" onclick="bpgCopy()">📋 Copy</button>
+        <button class="bpg-act" onclick="bpgGenerate()">🔄 Regenerate</button>
+        <button class="bpg-act" onclick="bpgShare()">🔗 Share</button>
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align:center;margin-top:2rem;color:rgba(255,255,255,.25);font-size:.75rem">Powered by Claude AI ✨</p>
+</div>
+</div>
+
+<script>
+var bpgLang='Hindi',bpgPoem='';
+document.getElementById('bpg-langs').addEventListener('click',function(e){
+  var b=e.target.closest('.bpg-lang');
+  if(!b)return;
+  document.querySelectorAll('.bpg-lang').forEach(function(x){x.classList.remove('active')});
+  b.classList.add('active');
+  bpgLang=b.getAttribute('data-lang');
+});
+document.getElementById('bpg-name').addEventListener('keydown',function(e){if(e.key==='Enter')bpgGenerate()});
+async function bpgGenerate(){
+  var name=document.getElementById('bpg-name').value.trim();
+  if(!name){alert('Please enter a name!');return;}
+  var style=document.getElementById('bpg-style').value;
+  var btn=document.getElementById('bpg-btn');
+  var btntxt=document.getElementById('bpg-btntxt');
+  var out=document.getElementById('bpg-out');
+  var ptext=document.getElementById('bpg-ptext');
+  var ptitle=document.getElementById('bpg-ptitle');
+  btn.disabled=true;
+  btntxt.innerHTML='<span class="bpg-dots"><span></span><span></span><span></span></span>';
+  out.style.display='block';
+  ptext.textContent='';
+  ptitle.textContent='Birthday Poem for '+name;
+  var styles={heartfelt:'heartfelt and emotional',funny:'funny and playful',romantic:'romantic and poetic',inspirational:'inspirational',short:'short and sweet (4-6 lines)',long:'long and detailed (12-16 lines)'};
+  var langs={Hindi:'Write ONLY in Hindi Devanagari script.',English:'Write ONLY in English.',Marathi:'Write ONLY in Marathi Devanagari script.',Bengali:'Write ONLY in Bengali script.',Tamil:'Write ONLY in Tamil script.',Punjabi:'Write ONLY in Punjabi Gurmukhi script.',Urdu:'Write ONLY in Urdu script.',Spanish:'Write ONLY in Spanish.',French:'Write ONLY in French.',Arabic:'Write ONLY in Arabic script.',Japanese:'Write ONLY in Japanese.',Telugu:'Write ONLY in Telugu script.'};
+  var prompt=(langs[bpgLang]||'Write in '+bpgLang+'.')+' Write a '+styles[style]+' birthday poem for "'+name+'". Include the name at least once. Output ONLY the poem, no intro or explanation.';
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
+    var data=await res.json();
+    bpgPoem=data.content[0].text.trim();
+    var i=0;
+    var iv=setInterval(function(){
+      if(i<bpgPoem.length){ptext.textContent+=bpgPoem[i];i++;}
+      else clearInterval(iv);
+    },18);
+  }catch(e){ptext.textContent='❌ Error! Please try again.';}
+  btn.disabled=false;
+  btntxt.textContent='✨ Generate Birthday Poem';
+}
+function bpgCopy(){
+  if(!bpgPoem)return;
+  navigator.clipboard.writeText(bpgPoem).then(function(){alert('Poem copied!')});
+}
+function bpgShare(){
+  var name=document.getElementById('bpg-name').value.trim();
+  if(!bpgPoem)return;
+  var txt='🎂 Birthday Poem for '+name+'!\n\n'+bpgPoem+'\n\n✨ Generated at my blog';
+  if(navigator.share)navigator.share({title:'Birthday Poem for '+name,text:txt});
+  else{navigator.clipboard.writeText(txt);alert('Copied for sharing!');}
+}
+</script>
